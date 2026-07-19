@@ -1,0 +1,391 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Audio/Video Transcription to MOM | AI Transcription Hub</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.82)),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    overflow:hidden;
+
+}
+
+/* Animated Background */
+
+body::before{
+
+content:"";
+position:absolute;
+width:900px;
+height:900px;
+background:#ff2400;
+filter:blur(240px);
+opacity:.10;
+top:-300px;
+left:-200px;
+animation:move1 12s ease-in-out infinite;
+
+}
+
+body::after{
+
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+background:#ff2400;
+filter:blur(220px);
+opacity:.08;
+right:-200px;
+bottom:-250px;
+animation:move2 14s ease-in-out infinite;
+
+}
+
+@keyframes move1{
+
+50%{
+transform:translate(100px,70px);
+}
+
+}
+
+@keyframes move2{
+
+50%{
+transform:translate(-120px,-60px);
+}
+
+}
+
+header{
+
+position:absolute;
+top:28px;
+right:55px;
+display:flex;
+align-items:center;
+gap:18px;
+z-index:5;
+
+}
+
+.profile{
+
+width:58px;
+height:58px;
+border-radius:50%;
+background:#111;
+border:2px solid #ff2400;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+transition:.4s;
+box-shadow:0 0 18px #ff240080;
+
+}
+
+.profile:hover{
+
+transform:scale(1.08);
+box-shadow:0 0 28px #ff2400;
+
+}
+
+.profile img{
+
+width:33px;
+height:33px;
+filter:invert(1);
+
+}
+
+.start{
+
+padding:15px 34px;
+font-size:16px;
+font-weight:700;
+border:none;
+border-radius:50px;
+background:#ff2400;
+color:white;
+cursor:pointer;
+transition:.4s;
+box-shadow:0 0 20px #ff240090;
+
+}
+
+.start:hover{
+
+transform:translateY(-4px);
+box-shadow:0 0 35px #ff2400;
+}
+
+.container{
+
+height:100vh;
+display:flex;
+align-items:center;
+padding-left:8%;
+position:relative;
+z-index:2;
+
+}
+
+.content{
+
+width:700px;
+animation:fadeUp 1.2s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.tag{
+
+display:inline-block;
+padding:10px 22px;
+border:1px solid #ff2400;
+color:#ff2400;
+border-radius:40px;
+font-size:14px;
+margin-bottom:30px;
+letter-spacing:1px;
+
+}
+
+h1{
+
+font-size:60px;
+line-height:1.15;
+color:white;
+font-weight:800;
+margin-bottom:18px;
+
+}
+
+.red{
+
+color:#ff2400;
+
+}
+
+p{
+
+color:#d6d6d6;
+font-size:18px;
+line-height:1.9;
+max-width:650px;
+margin-bottom:35px;
+
+}
+
+.features{
+
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+
+}
+
+.card{
+
+padding:15px 22px;
+border:1px solid rgba(255,36,0,.4);
+background:rgba(0,0,0,.65);
+border-radius:14px;
+color:white;
+transition:.4s;
+
+}
+
+.card:hover{
+
+border-color:#ff2400;
+transform:translateY(-6px);
+box-shadow:0 0 22px rgba(255,36,0,.45);
+
+}
+
+.circle{
+
+position:absolute;
+border-radius:50%;
+border:1px solid rgba(255,36,0,.25);
+animation:rotate 20s linear infinite;
+
+}
+
+.c1{
+
+width:350px;
+height:350px;
+right:110px;
+bottom:80px;
+
+}
+
+.c2{
+
+width:500px;
+height:500px;
+right:35px;
+bottom:5px;
+animation-duration:30s;
+
+}
+
+@keyframes rotate{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@media(max-width:900px){
+
+header{
+
+right:20px;
+top:20px;
+
+}
+
+.container{
+
+padding:30px;
+
+}
+
+h1{
+
+font-size:42px;
+
+}
+
+p{
+
+font-size:16px;
+
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="profile">
+
+<img src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png">
+
+</div>
+
+<a href="/transcription">
+<button class="start">
+    Start Transcription
+</button>
+</a>
+
+</header>
+
+<div class="container">
+
+<div class="content">
+
+<div class="tag">
+AI Powered Smart Documentation
+</div>
+
+<h1>
+
+Audio/Video <span class="red">Transcription</span><br>
+
+to MOM, Lecture Notes & Interview Q&A
+
+</h1>
+
+<p>
+
+Transform your meetings, classroom lectures, interviews and recorded conversations into
+accurate transcripts, professional Minutes of Meeting (MOM), structured lecture notes,
+and intelligent Interview Questions & Answers using Artificial Intelligence.
+Experience faster documentation with a modern, secure and easy-to-use platform.
+
+</p>
+
+<div class="features">
+
+<div class="card">
+🎙️ Audio & Video Support
+</div>
+
+<div class="card">
+📄 Smart MOM Generator
+</div>
+
+<div class="card">
+🧠 AI Lecture Notes
+</div>
+
+<div class="card">
+💼 Interview Q&A
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+
+</body>
+</html>
+```

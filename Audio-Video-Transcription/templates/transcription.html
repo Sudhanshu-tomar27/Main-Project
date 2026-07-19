@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        AI Transcription Workspace
+
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<div class="background-animation"></div>
+
+
+
+<header>
+
+<div class="logo">
+
+AI Transcription
+
+</div>
+
+
+<nav>
+
+<a href="/">Home</a>
+
+<a href="#">About</a>
+
+<a href="#">Support</a>
+
+</nav>
+
+</header>
+
+
+
+
+<section class="hero">
+
+
+<h1>
+
+AI Transcription Workspace
+
+</h1>
+
+
+<p>
+
+Upload any Audio or Video file
+
+or
+
+Paste a Video Link
+
+to generate
+
+Transcript,
+
+AI Summary,
+
+Lecture Notes,
+
+Interview Q&A
+
+and Minutes of Meeting.
+
+</p>
+
+
+</section>
+
+
+
+
+<section class="cards">
+
+
+<!-- Upload Card -->
+
+<div class="card upload-card">
+
+<div class="overlay"></div>
+
+<div class="content">
+
+
+<h2>
+
+🎤 Upload Audio / Video
+
+</h2>
+
+
+<p>
+
+Upload files directly from
+
+Computer,
+
+Laptop,
+
+Mobile Phone
+
+or
+
+Storage Device.
+
+</p>
+
+
+<form
+
+action="/upload"
+
+method="POST"
+
+enctype="multipart/form-data"
+
+>
+
+<input
+
+type="file"
+
+name="media"
+
+accept="audio/*,video/*"
+
+required
+
+>
+
+
+<div class="buttons">
+
+
+<button
+type="submit"
+name="action"
+value="transcript">
+
+Transcript
+
+</button>
+
+
+
+<button
+type="submit"
+name="action"
+value="summary">
+
+AI Summary
+
+</button>
+
+
+
+<button
+type="submit"
+name="action"
+value="notes">
+
+Audio / Video Notes
+
+</button>
+
+
+<button 
+type="submit"
+name="action"
+value="qa">
+
+Interview Q&A
+
+</button>
+
+
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- Link Card -->
+
+<div class="card link-card">
+
+<div class="overlay"></div>
+
+<div class="content">
+
+
+<h2>
+
+🌐 Transcribe from Links
+
+</h2>
+
+
+<p>
+
+Paste
+
+YouTube,
+
+Google Drive,
+
+Dropbox,
+
+Audio
+
+or
+
+Video
+
+Links.
+
+</p>
+
+
+
+<form
+
+action="/link"
+
+method="POST"
+
+>
+
+
+<input
+
+type="url"
+
+name="link"
+
+placeholder="Paste Audio / Video URL"
+
+required
+
+>
+
+
+<div class="buttons">
+
+
+<button
+
+type="submit"
+
+name="action"
+
+value="transcript"
+
+>
+
+Transcript
+
+</button>
+
+
+
+<button
+
+type="submit"
+
+name="action"
+
+value="summary"
+
+>
+
+AI Summary
+
+</button>
+
+
+
+<button
+
+type="submit"
+
+name="action"
+
+value="notes"
+
+>
+
+Audio / Video Notes
+
+</button>
+
+
+
+<button 
+
+type="submit"
+
+name="action"
+
+value="qa"
+
+>
+
+Interview Q&A
+
+</button>
+
+
+
+</div>
+
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+
+<title>
+AI Transcript
+</title>
+
+
+<link rel="stylesheet"
+href="{{url_for('static',
+filename='style2.css')}}">
+
+
+</head>
+
+
+
+<body class="document-page">
+
+
+
+
+
+<!-- THREE LINE MENU -->
+
+
+<div class="menu-container">
+
+
+<div class="menu"
+onclick="toggleMenu()">
+
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+
+</div>
+
+
+
+
+<div class="menu-box" id="menuBox">
+
+
+<button onclick="saveFile()">
+
+💾 Save
+
+</button>
+
+
+
+<button onclick="translateText()">
+
+🌐 Translation
+
+</button>
+
+
+</div>
+
+
+</div>
+
+<div class="menu-container">
+
+
+<div class="menu"
+onclick="toggleMenu()">
+
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+
+</div>
+
+
+
+
+<div class="menu-box" id="menuBox">
+
+
+<button onclick="downloadPDF()">
+
+⬇ Download
+
+</button>
+
+
+
+<button onclick="translateText()">
+
+🌐 Translation
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="document">
+
+
+<h1>
+
+Audio / Video Transcript
+
+</h1>
+
+
+
+<div class="line"></div>
+
+
+
+<div class="text-content">
+
+
+{{ transcript }}
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+</body>
+
+
+</html>

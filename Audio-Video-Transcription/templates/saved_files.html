@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+Saved Files
+</title>
+
+
+<link rel="stylesheet"
+href="{{url_for(
+'static',
+filename='style3.css'
+)}}">
+
+</head>
+
+
+
+<body class="saved-page">
+
+
+<h1>
+Saved Files
+</h1>
+
+
+
+<input class="search-box"
+placeholder="Search file..."
+onkeyup="searchFiles(this.value)">
+
+
+
+
+
+<div class="files-container">
+
+
+{% for file in files %}
+
+
+<div class="file-card">
+
+
+<div class="file-icon">
+
+📄
+
+</div>
+
+
+<h2>
+
+{{file.name}}
+
+</h2>
+
+
+<p>
+
+{{file.date}}
+
+</p>
+
+
+
+<a href="{{url_for(
+'open_file',
+filename=file.name
+)}}">
+
+
+<button>
+
+Open File
+
+</button>
+
+
+</a>
+
+
+
+<a href="{{url_for(
+'delete_file',
+filename=file.name
+)}}">
+
+
+<button class="delete">
+
+Delete
+
+</button>
+
+
+</a>
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+
+<script>
+
+function searchFiles(value){
+
+
+let cards=document.querySelectorAll(
+".file-card"
+);
+
+
+cards.forEach(card=>{
+
+
+if(card.innerText
+.toLowerCase()
+.includes(value.toLowerCase()))
+{
+
+card.style.display="block";
+
+}
+
+else{
+
+card.style.display="none";
+
+}
+
+
+});
+
+
+}
+
+</script>
+
+
+</body>
+
+</html>

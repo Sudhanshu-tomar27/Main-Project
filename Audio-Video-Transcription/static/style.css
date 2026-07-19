@@ -1,0 +1,1868 @@
+/* ================================
+   GLOBAL SETTINGS
+================================ */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:#000;
+
+    color:white;
+
+    overflow-x:hidden;
+
+}
+
+
+
+/* ================================
+   AI BACKGROUND EFFECT
+================================ */
+
+
+body::before{
+
+
+    content:"";
+
+    position:fixed;
+
+    width:600px;
+
+    height:600px;
+
+    background:#ff2400;
+
+    filter:blur(220px);
+
+    opacity:0.15;
+
+    top:-200px;
+
+    left:-200px;
+
+    animation:glowMove1 12s infinite alternate;
+
+    z-index:-1;
+
+
+}
+
+
+
+
+body::after{
+
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+
+    height:500px;
+
+    background:#ff2400;
+
+    filter:blur(220px);
+
+    opacity:0.12;
+
+    bottom:-200px;
+
+    right:-150px;
+
+    animation:glowMove2 15s infinite alternate;
+
+    z-index:-1;
+
+
+}
+
+
+
+
+@keyframes glowMove1{
+
+
+    from{
+
+        transform:translate(0,0);
+
+    }
+
+
+    to{
+
+        transform:translate(150px,100px);
+
+    }
+
+}
+
+
+
+@keyframes glowMove2{
+
+
+    from{
+
+        transform:translate(0,0);
+
+    }
+
+
+    to{
+
+        transform:translate(-120px,-80px);
+
+    }
+
+}
+
+
+
+/* ================================
+   MOVING PARTICLE BACKGROUND
+================================ */
+
+
+.background-animation{
+
+
+    position:fixed;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+
+
+.background-animation::before{
+
+
+    content:"";
+
+    position:absolute;
+
+    width:8px;
+
+    height:8px;
+
+    background:#ff2400;
+
+    border-radius:50%;
+
+    box-shadow:
+
+    100px 50px #ff2400,
+    250px 200px #ff2400,
+    500px 100px #ff2400,
+    700px 300px #ff2400,
+    900px 150px #ff2400,
+    1100px 400px #ff2400;
+
+
+    animation:floatingParticles 10s infinite linear;
+
+    opacity:.4;
+
+
+}
+
+
+
+@keyframes floatingParticles{
+
+
+    from{
+
+        transform:translateY(100vh);
+
+    }
+
+
+    to{
+
+        transform:translateY(-20vh);
+
+    }
+
+
+}
+
+
+
+/* ================================
+   HEADER
+================================ */
+
+
+header{
+
+
+    width:100%;
+
+    height:90px;
+
+    padding:0 70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    position:relative;
+
+    z-index:5;
+
+
+}
+
+
+
+
+
+/* Logo */
+
+
+.logo{
+
+
+    font-size:32px;
+
+    font-weight:800;
+
+    color:white;
+
+    letter-spacing:1px;
+
+}
+
+
+.logo::first-letter{
+
+
+    color:#ff2400;
+
+}
+
+
+
+
+/* Navigation */
+
+
+nav{
+
+
+    display:flex;
+
+    gap:35px;
+
+
+}
+
+
+
+nav a{
+
+
+    text-decoration:none;
+
+    color:#ddd;
+
+    font-size:16px;
+
+    transition:.4s;
+
+
+}
+
+
+
+
+nav a:hover{
+
+
+    color:#ff2400;
+
+    text-shadow:
+
+    0 0 15px #ff2400;
+
+
+}
+
+
+
+
+/* ================================
+   SCROLL BAR
+================================ */
+
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:#000;
+
+}
+
+
+
+::-webkit-scrollbar-thumb{
+
+    background:#ff2400;
+
+    border-radius:20px;
+
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+
+
+.hero{
+
+
+    text-align:center;
+
+    padding:50px 20px 30px;
+
+    animation:fadeIn 1.2s ease;
+
+
+}
+
+
+
+.hero h1{
+
+
+    font-size:55px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    margin-bottom:20px;
+
+
+    background:linear-gradient(
+        90deg,
+        white,
+        #ff2400
+    );
+
+
+    background-clip:text;
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+
+}
+
+
+
+
+.hero p{
+
+
+    max-width:850px;
+
+    margin:auto;
+
+    color:#cfcfcf;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+
+
+@keyframes fadeIn{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+/* ================================
+   CARD SECTION
+================================ */
+
+
+
+.cards{
+
+
+    width:90%;
+
+    margin:50px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:45px;
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+
+/* ================================
+   COMMON CARD DESIGN
+================================ */
+
+
+.card{
+
+
+    width:450px;
+
+    height:480px;
+
+    position:relative;
+
+    overflow:hidden;
+
+
+    border-radius:30px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border:2px solid rgba(255,36,0,.7);
+
+
+
+    box-shadow:
+
+
+    0 0 30px rgba(255,36,0,.25);
+
+
+
+    transition:.5s;
+
+
+}
+
+
+
+
+
+.card:hover{
+
+
+    transform:
+
+    translateY(-15px)
+    scale(1.02);
+
+
+
+    box-shadow:
+
+
+    0 0 60px rgba(255,36,0,.8);
+
+
+}
+
+
+
+
+
+/* Card dark overlay */
+
+
+.overlay{
+
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+
+    background:
+
+    linear-gradient(
+
+    rgba(0,0,0,.75),
+
+    rgba(0,0,0,.9)
+
+    );
+
+
+}
+
+
+
+
+/* Card Content */
+
+
+.content{
+
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    width:90%;
+
+
+}
+
+
+
+.content h2{
+
+
+    color:#ff2400;
+
+    font-size:32px;
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+
+}
+
+
+
+
+
+.content p{
+
+
+    color:#ddd;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+/* ================================
+   FORM DESIGN
+================================ */
+
+
+form{
+
+
+    width:100%;
+
+
+}
+
+
+
+
+input[type="file"],
+
+
+input[type="url"]{
+
+
+    width:90%;
+
+    padding:15px 20px;
+
+    margin:15px 0 25px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    border:
+
+    1px solid #ff2400;
+
+
+    border-radius:30px;
+
+
+    outline:none;
+
+
+    font-size:15px;
+
+
+}
+
+
+
+
+
+input::placeholder{
+
+
+    color:#aaa;
+
+
+}
+
+
+
+
+
+input[type="file"]::file-selector-button{
+
+
+    background:#ff2400;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+
+}
+
+
+
+
+
+
+/* ================================
+   BUTTON CONTAINER
+================================ */
+
+
+.buttons{
+
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+.buttons button{
+
+
+    padding:13px 22px;
+
+    border-radius:30px;
+
+
+    border:none;
+
+
+    background:#ff2400;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+
+.buttons button:hover{
+
+
+    transform:scale(1.08);
+
+
+    box-shadow:
+
+    0 0 25px #ff2400;
+
+
+}
+
+/* ================================
+   UPLOAD AUDIO / VIDEO CARD
+================================ */
+
+
+.upload-card{
+
+
+    background-image:
+
+    linear-gradient(
+        rgba(0,0,0,.75),
+        rgba(0,0,0,.85)
+    ),
+
+    url(
+    "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=900&q=80"
+    );
+
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    animation:
+
+    cardFloat 6s ease-in-out infinite;
+
+
+}
+
+
+
+
+
+
+/* ================================
+   LINK TRANSCRIPTION CARD
+================================ */
+
+
+.link-card{
+
+
+    background-image:
+
+
+    linear-gradient(
+        rgba(0,0,0,.75),
+        rgba(0,0,0,.85)
+    ),
+
+
+    url(
+    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+    );
+
+
+    background-size:cover;
+
+
+    background-position:center;
+
+
+    animation:
+
+    cardFloat 7s ease-in-out infinite;
+
+
+}
+
+
+
+
+
+
+
+/* ================================
+   CARD FLOATING ANIMATION
+================================ */
+
+
+@keyframes cardFloat{
+
+
+    0%{
+
+
+        transform:translateY(0px);
+
+
+    }
+
+
+    50%{
+
+
+        transform:translateY(-12px);
+
+
+    }
+
+
+    100%{
+
+
+        transform:translateY(0px);
+
+
+    }
+
+
+}
+
+
+
+
+
+/* ================================
+   CARD GLOW BORDER EFFECT
+================================ */
+
+
+.card::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:-2px;
+
+
+    border-radius:32px;
+
+
+    background:
+
+
+    linear-gradient(
+
+    45deg,
+
+    transparent,
+
+    #ff2400,
+
+    transparent
+
+    );
+
+
+    opacity:0;
+
+
+    transition:.5s;
+
+
+    z-index:-1;
+
+
+}
+
+
+
+
+.card:hover::before{
+
+
+    opacity:1;
+
+
+    animation:
+
+    rotateBorder 3s linear infinite;
+
+
+}
+
+
+
+
+
+@keyframes rotateBorder{
+
+
+    from{
+
+
+        transform:rotate(0deg);
+
+
+    }
+
+
+    to{
+
+
+        transform:rotate(360deg);
+
+
+    }
+
+
+}
+
+
+
+
+
+/* ================================
+   ICON STYLE
+================================ */
+
+
+.content h2{
+
+
+    text-shadow:
+
+
+    0 0 20px rgba(255,36,0,.8);
+
+
+}
+
+
+
+
+
+/* ================================
+   INPUT GLOW EFFECT
+================================ */
+
+
+input[type="file"]:focus,
+
+
+input[type="url"]:focus{
+
+
+    box-shadow:
+
+
+    0 0 25px rgba(255,36,0,.8);
+
+
+}
+
+
+
+
+
+/* ================================
+   BUTTON ACTIVE EFFECT
+================================ */
+
+
+.buttons button:active{
+
+
+    transform:scale(.95);
+
+
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+
+/* Tablet */
+
+@media(max-width:1100px){
+
+
+    header{
+
+
+        padding:0 30px;
+
+
+    }
+
+
+
+    .hero h1{
+
+
+        font-size:45px;
+
+
+    }
+
+
+
+
+    .cards{
+
+
+        gap:30px;
+
+
+    }
+
+
+
+    .card{
+
+
+        width:400px;
+
+
+    }
+
+
+
+}
+
+
+
+
+/* Mobile */
+
+
+@media(max-width:700px){
+
+
+
+body{
+
+
+    overflow-x:hidden;
+
+
+}
+
+
+
+header{
+
+
+    height:auto;
+
+    padding:25px;
+
+    flex-direction:column;
+
+    gap:20px;
+
+
+}
+
+
+
+
+
+.logo{
+
+
+    font-size:26px;
+
+
+}
+
+
+
+nav{
+
+
+    gap:20px;
+
+
+}
+
+
+
+
+.hero{
+
+
+    padding:30px 20px;
+
+
+}
+
+
+
+
+.hero h1{
+
+
+    font-size:34px;
+
+    line-height:1.3;
+
+
+}
+
+
+
+
+.hero p{
+
+
+    font-size:15px;
+
+
+}
+
+
+
+
+
+.cards{
+
+
+    width:95%;
+
+    margin-top:30px;
+
+
+}
+
+
+
+
+
+.card{
+
+
+    width:100%;
+
+    height:auto;
+
+    min-height:450px;
+
+
+}
+
+
+
+
+.content h2{
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+.buttons{
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+.buttons button{
+
+
+    width:90%;
+
+
+}
+
+
+}
+
+
+
+
+
+
+/* ================================
+   EXTRA AI GLOW ANIMATION
+================================ */
+
+
+.card{
+
+
+position:relative;
+
+
+}
+
+
+
+.card:hover .content{
+
+
+    animation:
+
+    contentGlow .8s ease;
+
+
+}
+
+
+
+@keyframes contentGlow{
+
+
+from{
+
+
+    transform:scale(.96);
+
+
+    opacity:.7;
+
+
+}
+
+
+
+to{
+
+
+    transform:scale(1);
+
+
+    opacity:1;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+/* ================================
+   BUTTON PULSE EFFECT
+================================ */
+
+
+.buttons button{
+
+
+animation:
+
+buttonPulse 3s infinite;
+
+
+}
+
+
+
+
+
+@keyframes buttonPulse{
+
+
+0%{
+
+
+box-shadow:
+
+0 0 0 rgba(255,36,0,0);
+
+
+}
+
+
+
+50%{
+
+
+box-shadow:
+
+0 0 20px rgba(255,36,0,.8);
+
+
+}
+
+
+
+100%{
+
+
+box-shadow:
+
+0 0 0 rgba(255,36,0,0);
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+/* ================================
+   AI PROCESSING STYLE
+================================ */
+
+
+.ai-loader{
+
+
+display:none;
+
+
+width:80px;
+
+height:80px;
+
+
+border-radius:50%;
+
+
+border:
+
+5px solid #111;
+
+
+border-top:
+
+5px solid #ff2400;
+
+
+
+animation:
+
+rotateLoader 1s linear infinite;
+
+
+
+margin:20px auto;
+
+
+}
+
+
+
+
+
+@keyframes rotateLoader{
+
+
+100%{
+
+
+transform:rotate(360deg);
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* ================================
+   TEXT FLOAT EFFECT
+================================ */
+
+
+.hero h1{
+
+
+animation:
+
+titleFloat 4s ease-in-out infinite;
+
+
+}
+
+
+
+
+
+@keyframes titleFloat{
+
+
+0%,100%{
+
+
+transform:translateY(0);
+
+
+}
+
+
+
+50%{
+
+
+transform:translateY(-8px);
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+/* ================================
+   SMOOTH PAGE ENTRY
+================================ */
+
+
+.card{
+
+
+animation:
+
+pageEntry 1.2s ease;
+
+
+}
+
+
+
+@keyframes pageEntry{
+
+
+from{
+
+
+opacity:0;
+
+transform:
+
+translateY(50px);
+
+
+}
+
+
+to{
+
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+
+}
+
+
+
+}
+
+/* ================================
+   AI PROCESSING POPUP
+================================ */
+
+
+.processing-box{
+
+
+position:fixed;
+
+
+top:50%;
+
+left:50%;
+
+
+transform:
+
+translate(-50%,-50%);
+
+
+background:#000;
+
+
+border:
+
+2px solid #ff2400;
+
+
+padding:40px;
+
+
+border-radius:25px;
+
+
+text-align:center;
+
+
+z-index:999;
+
+
+box-shadow:
+
+0 0 50px #ff2400;
+
+
+}
+
+
+
+.processing-box h3{
+
+
+color:#ff2400;
+
+
+margin-top:20px;
+
+
+}
+
+
+
+
+.processing-box p{
+
+
+color:white;
+
+
+}
+
+
+
+
+
+.loader-circle{
+
+
+width:80px;
+
+
+height:80px;
+
+
+border-radius:50%;
+
+
+border:
+
+6px solid #222;
+
+
+border-top:
+
+6px solid #ff2400;
+
+
+
+animation:
+
+spin 1s linear infinite;
+
+
+margin:auto;
+
+
+}
+
+
+
+@keyframes spin{
+
+
+100%{
+
+
+transform:rotate(360deg);
+
+
+}
+
+
+}
+
+/* ================================
+   DOCUMENT PAGE
+================================ */
+
+
+
+.document-page{
+
+
+background:white;
+
+color:black;
+
+min-height:100vh;
+
+
+}
+
+
+
+
+
+/* THREE LINE MENU */
+
+
+.menu{
+
+
+position:fixed;
+
+
+right:40px;
+
+
+top:30px;
+
+
+width:45px;
+
+
+height:40px;
+
+
+cursor:pointer;
+
+
+z-index:10;
+
+
+}
+
+
+
+
+.menu span{
+
+
+display:block;
+
+
+height:4px;
+
+
+background:#ff2400;
+
+
+margin:8px 0;
+
+
+border-radius:10px;
+
+
+}
+
+
+
+
+
+/* DOCUMENT AREA */
+
+
+.document{
+
+
+width:80%;
+
+
+margin:70px auto;
+
+
+background:white;
+
+
+padding:50px;
+
+
+border-radius:20px;
+
+
+box-shadow:
+
+
+0 0 30px rgba(0,0,0,.15);
+
+
+
+}
+
+
+
+.document h1{
+
+
+text-align:center;
+
+
+color:#ff2400;
+
+
+font-size:42px;
+
+
+}
+
+
+
+
+.line{
+
+
+height:3px;
+
+
+background:#000;
+
+
+margin:30px 0;
+
+
+}
+
+
+
+
+
+.text-content{
+
+
+font-size:18px;
+
+
+line-height:2;
+
+
+color:#111;
+
+
+white-space:pre-line;
+
+
+}
+
+
+
+
+
+@media(max-width:700px){
+
+
+.document{
+
+
+width:90%;
+
+
+padding:25px;
+
+
+}
+
+
+
+.document h1{
+
+
+font-size:30px;
+
+
+}
+
+
+}
