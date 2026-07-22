@@ -1,0 +1,8 @@
+Flask
+python-docx
+reportlab
+deep-translator
+google-generativeai
+python-dotenv
+yt-dlp
+faster-whisper
