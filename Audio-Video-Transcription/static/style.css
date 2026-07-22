@@ -1554,67 +1554,34 @@ translateY(0);
 ================================ */
 
 
-.processing-box{
+#processing{
 
+
+display:none;
 
 position:fixed;
 
+top:0;
 
-top:50%;
+left:0;
 
-left:50%;
+width:100%;
 
+height:100%;
 
-transform:
+background:
 
-translate(-50%,-50%);
-
-
-background:#000;
-
-
-border:
-
-2px solid #ff2400;
+rgba(0,0,0,.85);
 
 
-padding:40px;
+z-index:9999;
 
 
-border-radius:25px;
+justify-content:center;
 
+align-items:center;
 
-text-align:center;
-
-
-z-index:999;
-
-
-box-shadow:
-
-0 0 50px #ff2400;
-
-
-}
-
-
-
-.processing-box h3{
-
-
-color:#ff2400;
-
-
-margin-top:20px;
-
-
-}
-
-
-
-
-.processing-box p{
-
+flex-direction:column;
 
 color:white;
 
@@ -1623,15 +1590,22 @@ color:white;
 
 
 
+#processing h2{
+
+color:#ff2400;
+
+margin-top:20px;
+
+}
 
 
-.loader-circle{
+
+.loader{
 
 
-width:80px;
+width:90px;
 
-
-height:80px;
+height:90px;
 
 
 border-radius:50%;
@@ -1639,35 +1613,29 @@ border-radius:50%;
 
 border:
 
-6px solid #222;
+8px solid #222;
 
 
 border-top:
 
-6px solid #ff2400;
-
+8px solid #ff2400;
 
 
 animation:
 
-spin 1s linear infinite;
-
-
-margin:auto;
+rotate 1s linear infinite;
 
 
 }
 
 
 
-@keyframes spin{
+@keyframes rotate{
 
 
 100%{
 
-
 transform:rotate(360deg);
-
 
 }
 

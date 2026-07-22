@@ -1,66 +1,106 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-    <title>Interview Q&A</title>
-
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='style2.css') }}">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Q&A | AI Transcription Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body class="document-page">
 
-<div class="menu-container">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <a href="/" class="brand-logo">AI <span>Transcription</span></a>
+        <a href="/transcription" class="back-btn">⬅ Workspace</a>
+    </header>
 
-    <div class="menu" onclick="toggleMenu()">
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </div>
-
-    <div class="menu-box" id="menuBox">
-
-        <button onclick="saveFile()">
-
-            💾 Save
-
+    <!-- UPPER RIGHT THREE-LINE MENU BUTTON -->
+    <div class="menu-container">
+        <button class="hamburger-btn" onclick="toggleMenu()" title="Menu Options">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
 
-        <button onclick="translateText()">
+        <div class="menu-dropdown" id="menuDropdown">
+            <!-- 1. Download Option -->
+            <button class="menu-item" onclick="toggleSubmenu('downloadSub')">
+                <span>📥 Download</span>
+                <span>▼</span>
+            </button>
+            <div class="submenu" id="downloadSub">
+                <button class="submenu-item" onclick="openDownloadModal('pdf')">
+                    📄 Download as PDF
+                </button>
+                <button class="submenu-item" onclick="openDownloadModal('docx')">
+                    📝 Download as Doc. File
+                </button>
+            </div>
 
-            🌐 Translation
+            <!-- 2. Share Option (Phone Visible, Desktop Hidden) -->
+            <button class="menu-item share-option" id="shareOption" onclick="shareDocument()">
+                <span>📲 Share</span>
+                <span>➔</span>
+            </button>
 
-        </button>
-
+            <!-- 3. Translate Option -->
+            <button class="menu-item" onclick="toggleSubmenu('translateSub')">
+                <span>🌐 Translate</span>
+                <span>▼</span>
+            </button>
+            <div class="submenu" id="translateSub">
+                <button class="submenu-item" onclick="translateDocument('en')">
+                    🇬🇧 Hindi ➔ English
+                </button>
+                <button class="submenu-item" onclick="translateDocument('hi')">
+                    🇮🇳 English ➔ Hindi
+                </button>
+                <button class="submenu-item" onclick="translateDocument('mix')">
+                    🇮🇳🇬🇧 Hindi & English Mix
+                </button>
+            </div>
+        </div>
     </div>
 
-</div>
+    <!-- MAIN DOCUMENT CONTAINER -->
+    <main class="document-container">
+        <div class="document-card">
+            <div class="doc-header">
+                <h1 class="doc-title" id="docTitle">Interview Q&A</h1>
+                <p class="doc-subtitle">Generated questions & comprehensive answers</p>
+                <div class="red-divider"></div>
+            </div>
+            <div class="text-content" id="textContent">{{ qa }}</div>
+        </div>
+    </main>
 
-<div class="document">
-
-    <h1>
-
-        Interview Q&A
-
-    </h1>
-
-    <div class="line"></div>
-
-    <div class="text-content">
-
-        {{ qa }}
-
+    <!-- RENAME DOWNLOAD MODAL POPUP -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-box">
+            <h3>Rename <span>File</span></h3>
+            <p>Specify the custom filename to save in your PC Downloads.</p>
+            <form id="downloadForm" method="POST" action="/download-pdf">
+                <div class="input-group">
+                    <label id="formatLabel">File Name (.pdf)</label>
+                    <input type="text" name="filename" id="filenameInput" class="rename-input" required placeholder="Enter new file name">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn btn-cancel" onclick="closeDownloadModal()">Cancel</button>
+                    <button type="submit" class="modal-btn btn-submit">Download</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-</div>
+    <!-- LOADING OVERLAY FOR TRANSLATION -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loadingText">Processing...</div>
+    </div>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='script2.js') }}"></script>
 </body>
-
 </html>

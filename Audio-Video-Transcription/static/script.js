@@ -1,146 +1,56 @@
-/* =====================================
-   FILE UPLOAD DISPLAY
-===================================== */
+let processing = false;
 
-const fileInput = document.querySelector('input[type="file"]');
+document.addEventListener("DOMContentLoaded", function () {
+    const forms = document.querySelectorAll("form");
 
-if (fileInput) {
+    forms.forEach(form => {
+        let clickedButtonValue = null;
 
-    fileInput.addEventListener("change", function () {
+        // Track which button was clicked
+        form.querySelectorAll("button[type='submit']").forEach(button => {
+            button.addEventListener("click", function () {
+                clickedButtonValue = this.value;
+            });
+        });
 
-        if (this.files.length > 0) {
+        form.addEventListener("submit", function (e) {
+            if (processing) return;
+            processing = true;
 
-            let fileName = this.files[0].name;
+            const action = clickedButtonValue || "transcript";
 
-            this.style.color = "#ff2400";
+            let title = "Processing...";
+            let text = "Please wait while AI is working...";
 
-            alert("Selected File: " + fileName);
-        }
-
-    });
-
-}
-
-
-/* =====================================
-   AI PROCESSING EFFECT
-===================================== */
-
-const forms = document.querySelectorAll("form");
-
-forms.forEach(function (form) {
-
-    form.addEventListener("submit", function (e) {
-
-        const clickedButton =
-            document.activeElement;
-
-        let heading = "Processing...";
-        let message = "Please wait...";
-
-        if (clickedButton) {
-
-            switch (clickedButton.value) {
-
-                case "transcript":
-                    heading = "Generating Transcript...";
-                    message = "Converting audio/video into text.";
-                    break;
-
-                case "summary":
-                    heading = "Generating AI Summary...";
-                    message = "Creating professional summary.";
-                    break;
-
-                case "notes":
-                    heading = "Generating Notes...";
-                    message = "Preparing notes with headings.";
-                    break;
-
-                case "qa":
-                    heading = "Generating Interview Q&A...";
-                    message = "Creating interview questions and answers.";
-                    break;
-
-                default:
-                    heading = "Processing...";
-                    message = "Please wait...";
+            if (action === "transcript") {
+                title = "Generating Transcript";
+                text = "Converting audio/video into verbatim text...";
+            } else if (action === "summary") {
+                title = "Creating AI Summary";
+                text = "AI is analyzing content and generating key takeaways...";
+            } else if (action === "notes") {
+                title = "Preparing Audio / Video Notes";
+                text = "Generating structured lecture notes and MOM...";
+            } else if (action === "qa") {
+                title = "Generating Interview Q&A";
+                text = "Creating interview questions and comprehensive answers...";
             }
 
-        }
-
-        showLoader(heading, message);
-
+            showProcessing(title, text);
+        });
     });
-
 });
 
+function showProcessing(title, text) {
+    let box = document.getElementById("processing");
 
-function showLoader(title, text) {
+    if (box) {
+        box.style.display = "flex";
+        const titleEl = document.getElementById("process-title");
+        const textEl = document.getElementById("process-text");
+        if (titleEl) titleEl.innerHTML = title;
+        if (textEl) textEl.innerHTML = text;
+    }
 
-    let loader = document.createElement("div");
-
-    loader.className = "processing-box";
-
-    loader.innerHTML = `
-
-        <div class="loader-circle"></div>
-
-        <h3>${title}</h3>
-
-        <p>${text}</p>
-
-    `;
-
-    document.body.appendChild(loader);
-
+    document.title = "⏳ Processing AI Documentation...";
 }
-
-
-/* =====================================
-   BUTTON CLICK ANIMATION
-===================================== */
-
-const buttons = document.querySelectorAll(".buttons button");
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", function () {
-
-        this.disabled = true;
-
-        this.innerHTML = "Processing...";
-
-    });
-
-});
-
-
-/* =====================================
-   PREVENT DOUBLE CLICK
-===================================== */
-
-let clicked = false;
-
-document.querySelectorAll("button").forEach(btn => {
-
-    btn.addEventListener("click", function (e) {
-
-        if (clicked) {
-
-            e.preventDefault();
-
-            return;
-        }
-
-        clicked = true;
-
-        setTimeout(() => {
-
-            clicked = false;
-
-        }, 3000);
-
-    });
-
-});
